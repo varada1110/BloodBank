@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<br>
+<br>
+<section style="padding-bottom:5%;">
+    <div class="mask d-flex align-items-center h-0 gradient-custom-3">
+      <div class="container h-0">
+        <div class="row d-flex justify-content-center align-items-center h-0">
+          <div class="col-11 col-md-7 col-lg-6 col-xl-5">
+            <div class="card" style="border-radius:5px; background: rgba(255,255,255,0.5);">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-4">Create an account</h2>
+                
+
+                {% if error %}
+
+                <i><h6 style="color:rgb(0, 0, 0); font-weight:500; text-align:center;" id="h">{{error}}</h6></i>
+                  <br>
+                {% endif %}
+
+
+
+                <form action="main" method="POST" id="signup-form">
+  
+                   {% csrf_token %}
+
+                   
+
+                  <div class="form-outline mb-3">
+                    <input type="text" id="name" name="name" class="form-control"  />
+                    <label class="form-label" for="name" id="n1">Your Name</label>
+                  </div>
+  
+                  <div class="form-outline mb-3">
+                    <input type="email" id="email" name="email" class="form-control"  />
+                    <label class="form-label" for="email" id="e1">Your Email</label>
+                  </div>
+  
+                  <div class="form-outline mb-3">
+                    <input type="password" id="pwd" name="pwd" class="form-control"  />
+                    <label class="form-label" for="pwd" id="p1">Password</label>
+                 </div>
+  
+                  
+                
+  
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg gradient-custom-3 text-body">Register</button>
+                  </div>
+  
+                  <p class="text-center text-muted mt-3 mb-0">Have already an account? 
+                      <button type="submit" class="btn btn-sm fw-bold text-body" ><u><a href="/">Login Here</a></u></button></p>
+  
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $("#name").blur(function(){
+        var text = $(this).val()
+        if(text.length<3){
+          alert("Enter minimum 3 characters")
+        }
+       
+      })
+      $("#email").blur(function(){
+        var text = $(this).val()
+        if(text.length<3){
+          alert("Enter valid email")
+        }
+      })
+      $("#pwd").blur(function(){
+        var text = $(this).val()
+        if(text.length<3){
+          alert("Enter valid password")
+        }
+      })
+      
+    
+    })
+  </script>
+
+{% endblock %}

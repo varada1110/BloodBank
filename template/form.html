@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div style="margin: 6% 22% 12% 22%; ">
+        <form action='form' method="POST">
+            
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label for="nme">Name:</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" class="fs-6">
+              <label id="err" style="display: none;">Enter minimum 3 characters</label>
+            </div>
+            <div class="form-group">
+              <label for="mail">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" class="fs-6">
+              <label id="err" style="display: none;">Enter valid email</label>
+            </div>
+            <div class="form-group">
+              <label for="number">Mobile Number</label>
+              <input type="text" class="form-control" id="number" placeholder="Enter number" name="number" class="fs-6">
+              <label id="err" style="display: none;">Enter valid number</label>
+            </div>
+            <div class="form-group">
+              <label for="bloodGroup">Blood Group</label>
+              <input type="text" class="form-control" id="bloodGroup" placeholder="Enter blood group" name="bloodGroup" class="fs-6">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" >Add</button>
+          </form>
+    </div>
+    
+  </div>
+
+  
+  <footer id="sticky-footer" class="flex-shrink-0 py-2 text-white-50" style="padding: 10px 10px 0px 10px; background-color:#5f3446; bottom:0; position:fixed; width: 100%; height:55px;">
+    <div class="container text-center">
+      <small>RathDHan</small><br>
+      <small>DONATE BLOOD SAVE LIFE</small>
+    </div>
+  </footer>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $("#name").blur(function(){
+        var text = $(this).val()
+        if(text.length<3){
+          alert("Enter minimum 3 characters")
+        }
+       
+      })
+      $("#email").blur(function(){
+        var text1 = $(this).val()
+        if(text1.length<3){
+          alert("Enter valid email")
+        }
+      })
+      $("#number").blur(function(){
+        var text2 = $(this).val()
+        if(text2.length<10){
+          alert("Enter valid number")
+        }
+      })
+      $("#bloodGroup").blur(function(){
+        var text3 = $(this).val()
+        if(text3.length<1){
+          alert("Enter valid blood group")
+        }
+      })
+    
+    })
+  
+    
+     
+    
+   </script>
+{% endblock %}
